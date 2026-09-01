@@ -1,0 +1,79 @@
+Item {
+	id, 
+	documentId, 
+	title, 
+	reference, 
+	description, 
+	createdAt, 
+	updatedAt, 
+	publishedAt, 
+	info {
+		key: value,
+		key2: value2
+	},
+	artists: [ 
+		{
+		id, 
+		documentId, 
+		createdAt, 
+		updatedAt, 
+		publishedAt, 
+		readable_artist, 
+		person {
+			id, 
+			documentId, 
+			firstname, 
+			middlename, 
+			lastname, 
+			date_of_birth, 
+			date_of_death, 
+			country, 
+			bio, 
+			createdAt, 
+			updatedAt, 
+			publishedAt, 
+			readable_name
+		}
+		artistfunction {
+			id, 
+			documentId, 
+			artistfunction, 
+			createdAt, 
+			updatedAt, 
+			publishedAt
+		}
+	}	
+	],
+	file {
+		id, 
+		documentId, 
+		name, 
+		alternativeText, 
+		caption, 
+		focalPoint, 
+		width, 
+		height, 
+		formats, 
+		hash, 
+		ext, 
+		mime, 
+		size, 
+		url, 
+		previewUrl, 
+		provider, 
+		provider_metadata, 
+		createdAt, 
+		updatedAt, 
+		publishedAt
+	},
+	tags: [
+		{
+			id, 
+			documentId, 
+			tagname, 
+			createdAt, 
+			updatedAt, 
+			publishedAt 
+		}
+	]
+}

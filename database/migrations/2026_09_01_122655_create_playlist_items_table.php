@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('playlist_item', function (Blueprint $table) {
+        Schema::create('playlist_items', function (Blueprint $table) {
             $table->id();
-            $table->string('item', 255);
-            $table->integer('position')->unsigned();
-            $table->foreignId('playlist_id')->references('id')->on('playlist')->cascadeOnDelete();
+            $table->unsignedInteger('item_id');
+            $table->unsignedInteger('playlist_id');
+            $table->integer('position');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('playlist_item');
+        Schema::dropIfExists('playlist_items');
     }
 };

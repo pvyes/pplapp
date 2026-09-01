@@ -1,37 +1,11 @@
 <?php
-/*
-namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
-#[fillable(['documentId', 'title', 'reference', 'description', 'info', 'file_id', 'publishedAt'])]
-#[casts(['info' => 'array', 'publishedAt' => 'datetime'])]
-class Item extends Model
-{
-    public function file(): BelongsTo
-    {
-        return $this->belongsTo(File::class);
-    }
-
-    public function artists(): HasMany
-    {
-        return $this->hasMany(Artist::class);
-    }
-
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-*/
 namespace App\Models;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 
-class Item
+class Items
 {
     /**
      * Read and parse all items from the items.json file.

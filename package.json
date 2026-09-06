@@ -15,5 +15,11 @@
     },
     "optionalDependencies": {
         "@laravel/multiplex": "^0.4.1"
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../ppl/mediapackage"
+        }
+    ]
 }

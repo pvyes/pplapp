@@ -36,4 +36,9 @@ class User extends Authenticatable
         return $this->hasMany(Chirp::class);
     }
 
+     public function playlists(): HasMany
+    {
+        return $this->hasMany(Playlist::class);
+    }
+
 }

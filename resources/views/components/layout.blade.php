@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ isset($title) ? $title . ' - Chirper' : 'Chirper' }}</title>
+    <title>{{ isset($title) ? $title : 'Peterspianolessen' }}</title>
     <link rel="preconnect" href="<https://fonts.bunny.net>">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
 </head>
 <body class="min-h-screen flex flex-col bg-base-200 font-sans">
     <nav class="navbar bg-base-100">
@@ -17,7 +24,12 @@
         </div>
         <div class="navbar-end gap-2">
             @auth
-                <span class="text-sm">{{ auth()->user()->name }}</span>
+                <div class="avatar"  data-toggle="tooltip" rel="tooltip" data-placement="top" title="{{ auth()->user()->name }}">
+                    <div class="size-10 rounded-full">
+                        <img src="{{ (auth()->user())->avatar}}">
+                        <div class="avatar-letter">{{ (auth()->user()->name)[0]}}</div>
+                    </div>
+                </div>
                 <form method="POST" action="/logout" class="inline">
                     @csrf
                     <button type="submit" class="btn btn-ghost btn-sm">Logout</button>
@@ -26,8 +38,8 @@
                 <a href="/login" class="btn btn-ghost btn-sm">Sign In</a>
                 <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Sign Up</a>
             @endauth
-</div>
-    </nav>
+        </div>
+
     <!-- Success Toast -->
     @if (session('success'))
         <div class="toast toast-top toast-center">
@@ -39,7 +51,7 @@
             </div>
         </div>
     @endif
-
+    </nav>
     <main class="flex-1 container mx-auto px-4 py-8">
         {{ $slot }}
     </main>

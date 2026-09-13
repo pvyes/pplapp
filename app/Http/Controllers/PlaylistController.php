@@ -12,7 +12,7 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-      return view('playlists', [
+      return view('playlists.playlists', [
         'playlists' => Playlist::all()
       ]);
     }
@@ -34,16 +34,6 @@ class PlaylistController extends Controller
       // Validate the request
       $validated = $this->validatePlaylist($request);
       auth()->user()->playlists()->create($validated);
-
-      // Create the chirp (no user for now - we'll add auth later)
-      /*
-      \App\Models\Playlist::create([
-          'title' => $validated['title'],
-          'description' => $validated['description'],
-          'visibility' => $validated['visibility'],
-          'user_id' => auth()->id(),
-      ]);
-      */
 
       // Redirect back to the feed
       return redirect('/playlist')->with('success', 'Playlist created!');

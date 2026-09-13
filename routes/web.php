@@ -8,10 +8,11 @@ use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 
 //home
- Route::get('/', [PlaylistController::class, 'store']);
+ Route::get('/', [PlaylistController::class, 'index'])->name('home');
 
 //item routes
 Route::get('/items', [ItemController::class, 'index']);
+Route::get('/items/{id}', [ItemController::class, 'show']);
 
 //playlist routes
 // Protected routes

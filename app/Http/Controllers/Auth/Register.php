@@ -14,9 +14,10 @@ class Register extends Controller
     {
         // Validate the input
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'avatar' => 'nullable|url|max:255',
         ]);
 
         // Create the user
@@ -24,6 +25,7 @@ class Register extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'avatar' => $validated['avatar'] ?? null,
         ]);
 
         // Log them in

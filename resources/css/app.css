@@ -24,3 +24,30 @@
         }
     }
 }
+
+.avatar-selector *  {
+  display: inline;
+}
+
+.avatar-selector input {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+.avatar-selector input:checked + img {
+  border: 2px solid #000;
+}
+
+.avatar-letter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.title-and-artists li {
+    display: inline;
+}

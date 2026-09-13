@@ -10,6 +10,7 @@
 
                 <template x-if="selectedItem">
                     <div class="item-details space-y-4">
+                        <!-- Title and arists -->
                         <div class="title-and-artists">
                             <h2 class="text-2xl font-bold text-gray-900 text-left" x-text="selectedItem.title"></h2>
                             <ul class="list-inside text-sm text-gray-700 mt-1 space-y-1 text-left">
@@ -25,6 +26,7 @@
                             </template>
                             </ul>
                         </div>
+                        <!-- Description -->
                         <div class="description text-sm">              
                             <template x-if="selectedItem.description && selectedItem.description.length">
                                 <div>
@@ -33,26 +35,49 @@
                                 </div>
                             </template> 
                         </div>
-                        <div class="border-t pt-3">
-                        <div class="text-sm text-gray-700 space-y-1">
-                            <div><strong>ID:</strong> <span x-text="selectedItem.id"></span></div>
-                            <div><strong>Reference:</strong> <span x-text="selectedItem.reference || 'N/A'"></span></div>
-                            <template x-if="selectedItem.publishedAt">
-                                <div><strong>Published At:</strong> <span x-text="new Date(selectedItem.publishedAt).toLocaleDateString()"></span></div>
+                        <!-- Tags -->
+                        <div class="tags text-sm">
+                            <template x-if="selectedItem.tags && selectedItem.tags.length">
+                                <div>
+                                    <strong class="text-lg font-semibold text-gray-900">Tags:</strong>
+                                    <div class="flex flex-wrap gap-1 mt-1">
+                                        <template x-for="(tag, index) in selectedItem.tags" :key="index">
+                                            <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded" x-text="tag.tagname"></span>
+                                        </template>
+                                    </div>
+                                </div>
                             </template>
+                        </div>
+                        <!-- Media player -->
+                        @include('items.mediaplayer')
+
+                        <!-- Date, ID, Reference -->
+                        <div class="date-id-reference border-t pt-3">
+                        <div class="text-sm text-gray-700 space-y-1 grid grid-cols-3 gap-2">
+                            <template x-if="selectedItem.publishedAt">
+                            <div><strong>Published At:</strong> <span x-text="new Date(selectedItem.publishedAt).toLocaleDateString()"></span></div>
+                            </template>
+                            <template x-if="selectedItem.id">
+                                <div><strong>ID:</strong> <span x-text="selectedItem.id"></span></div>
+                            </template>
+                            <template x-if="selectedItem.reference">
+                                <div><strong>Reference:</strong> <span x-text="selectedItem.reference"></span></div>
+                            </template>    
                         </div>
 
                         <!-- Custom Metadata (Info Object) -->
-                        <template x-if="selectedItem.info && Object.keys(selectedItem.info).length">
-                            <div class="bg-gray-50 p-3 rounded border">
-                                <strong class="block mb-1 text-sm">Additional Info:</strong>
-                                <div class="text-xs space-y-1">
-                                    <template x-for="(val, key) in selectedItem.info" :key="key">
-                                        <div><span class="font-semibold" x-text="key"></span>: <span x-text="val"></span></div>
-                                    </template>
+                        <div class="metadatamt-3">
+                            <template x-if="selectedItem.info && Object.keys(selectedItem.info).length">
+                                <div class="bg-gray-50 p-3 rounded border">
+                                    <strong class="block mb-1 text-sm">Additional Info:</strong>
+                                    <div class="text-xs space-y-1">
+                                        <template x-for="(val, key) in selectedItem.info" :key="key">
+                                            <div><span class="font-semibold" x-text="key"></span>: <span x-text="val"></span></div>
+                                        </template>
+                                    </div>
                                 </div>
-                            </div>
-                        </template>
+                            </template>
+                        </div>
 
                         <!-- File Details -->
                         <template x-if="selectedItem.file">
@@ -70,18 +95,7 @@
                             </div>
                         </template>
 
-                        <!-- Tags -->
-                        <template x-if="selectedItem.tags && selectedItem.tags.length">
-                            <div class="border-t pt-3">
-                                <strong>Tags:</strong>
-                                <div class="flex flex-wrap gap-1 mt-1">
-                                    <template x-for="(tag, index) in selectedItem.tags" :key="index">
-                                        <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded" x-text="tag.tagname"></span>
-                                    </template>
-                                </div>
-                            </div>
-                        </template>
-
+                        
                     </div>
                 </template>
             </div>

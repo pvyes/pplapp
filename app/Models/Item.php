@@ -68,7 +68,7 @@ class Item
      */
     protected static function sanitize(array $data): array
     {
-        $keysToRemove = ['id', 'documentId', 'createdAt', 'updatedAt'];
+        $keysToRemove = ['documentId', 'createdAt', 'updatedAt'];
 
         foreach ($data as $key => $value) {
             if (in_array($key, $keysToRemove, true)) {

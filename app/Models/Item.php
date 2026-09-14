@@ -60,6 +60,13 @@ class Item
             $data = [$data];
         }
 
+        //add the api-root to the file url
+        foreach ($data as &$item) {
+            if (isset($item['file'][0]['url'])) {
+                $item['file'][0]['url'] = env('API_ROOT') . $item['file'][0]['url'];
+            }
+        }
+
         return collect($data)->map(fn($item) => self::sanitize($item));
     }
 

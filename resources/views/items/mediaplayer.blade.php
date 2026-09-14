@@ -1,5 +1,5 @@
 <div class="media-container">
-    <div><strong>Fileurl:</strong> <span x-text="selectedItem.file[0].mime"></span></div>
+    <div><strong>Fileurl:</strong> <span x-text="selectedItem.file[0].url"></span></div>
     {{-- 1. Check if the file is a Video --}}
     <template x-if="selectedItem.file[0].mime.startsWith('video/')">
       <video width="100%" height="auto" controls>

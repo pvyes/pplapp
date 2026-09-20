@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+    @livewireStyles
 </head>
 <body class="min-h-screen flex flex-col bg-base-200 font-sans">
     <nav class="navbar bg-base-100">
@@ -54,6 +54,7 @@
     </nav>
     <main class="flex-1 container mx-auto px-4 py-8">
         {{ $slot }}
+        @livewireScripts
     </main>
 
     <footer class="footer footer-center p-5 bg-base-300 text-base-content text-xs">

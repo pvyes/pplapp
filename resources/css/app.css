@@ -48,6 +48,10 @@
     font-size: 150%;
 }
 
-.title-and-artists li {
+.title-and-artists .list-inside li {
     display: inline;
+}
+
+.date-id-reference .space-y-1 > :not([hidden]) ~ :not([hidden]) {
+    margin: 0px;
 }

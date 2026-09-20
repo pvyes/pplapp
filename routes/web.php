@@ -12,7 +12,6 @@ use App\Http\Controllers\Auth\Logout;
 
 //item routes
 Route::get('/items', [ItemController::class, 'index']);
-Route::get('/items/{id}', [ItemController::class, 'show']);
 
 //playlist routes
 // Protected routes

@@ -5,11 +5,10 @@
 
     <div class="max-w-2xl mx-auto">
         <h1 class="text-3xl font-bold mt-8">Playlists</h1>
-
         <div class="space-y-4 mt-8">
-            @forelse ($playlists as $playlist)
-                <x-playlist :playlist="$playlist" />
-            @empty
+            @if (count($playlists) > 0)
+               <livewire:playlistlist :playlists="$playlists" />
+            @else
                 <div class="hero py-12">
                     <div class="hero-content text-center">
                         <div>
@@ -20,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-            @endforelse
+            @endif
             <div class="mt-8">
                 <a href="/playlists/create" class="btn btn-primary">Create New Playlist</a>
             </div>

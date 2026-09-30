@@ -42,9 +42,11 @@ class PlaylistController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Playlist $playlist)
+    public function show($id)
     {
-        //
+        // Find playlist or fail with a 404 error if not found
+        $playlist = Playlist::findOrFail($id); 
+        return view('playlists.playlist', compact('playlist'));
     }
 
     /**

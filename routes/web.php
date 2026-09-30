@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/playlists/{playlist}', [PlaylistController::class, 'destroy']);
 });
 Route::get('/playlist', [PlaylistController::class, 'index']);
+Route::get('/playlist/{id}', [PlaylistController::class, 'show'])->name('playlist.show');
 
 
 // Registration routes

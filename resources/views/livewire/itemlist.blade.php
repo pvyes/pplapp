@@ -1,5 +1,4 @@
  <div class="max-w-4xl mx-auto">
-    <h1 class="text-2xl font-bold mb-6">My Items</h1>
     <!-- Item List -->
     <div class="bg-white rounded-lg shadow overflow-hidden divide-y divide-gray-200">
         @foreach($items as $item)
